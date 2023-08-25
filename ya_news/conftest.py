@@ -41,7 +41,7 @@ def all_news():
 @pytest.fixture
 def comment(news, author):
     return Comment.objects.create(
-        news=news, author=author, text=f'Tекст',
+        news=news, author=author, text='Tекст',
     )
 
 
@@ -50,7 +50,7 @@ def two_comments(news, author):
     now = timezone.now()
     for index in range(2):
         comment = Comment.objects.create(
-             news=news, author=author, text=f'Tекст {index}',
+            news=news, author=author, text=f'Tекст {index}',
         )
         comment.created = now + timedelta(days=index)
         comment.save()

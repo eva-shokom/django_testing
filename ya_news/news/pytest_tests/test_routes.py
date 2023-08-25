@@ -9,12 +9,12 @@ from pytest_django.asserts import assertRedirects
 @pytest.mark.parametrize(
     'name, args',
     (
-            ('news:home', None),
-            ('news:detail', pytest.lazy_fixture('news_id_for_args')),
-            ('users:login', None),
-            ('users:logout', None),
-            ('users:signup', None),
-        )
+        ('news:home', None),
+        ('news:detail', pytest.lazy_fixture('news_id_for_args')),
+        ('users:login', None),
+        ('users:logout', None),
+        ('users:signup', None),
+    )
 )
 def test_pages_availability(client, name, args):
     url = reverse(name, args=args)
@@ -47,11 +47,11 @@ def test_availability_for_comment_edit_and_delete(
 
 @pytest.mark.django_db
 @pytest.mark.parametrize(
-        'name, args',
-        (
-            ('news:edit', pytest.lazy_fixture('comment_id_for_args')),
-            ('news:delete', pytest.lazy_fixture('comment_id_for_args')),
-        )
+    'name, args',
+    (
+        ('news:edit', pytest.lazy_fixture('comment_id_for_args')),
+        ('news:delete', pytest.lazy_fixture('comment_id_for_args')),
+    )
 )
 def test_redirect_for_anonymous_client(client, name, args):
     login_url = reverse('users:login')
