@@ -31,7 +31,14 @@ class TestRoutes(TestCase):
                 self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def test_pages_availability_for_auth_user(self):
-        urls = ('notes:list', 'notes:add', 'notes:success')
+        urls = (
+            'notes:list',
+            'notes:add',
+            'notes:success',
+            'notes:home',
+            'users:login',
+            'users:logout',
+            'users:signup')
         self.client.force_login(self.author)
         for name in urls:
             with self.subTest(name=name):
